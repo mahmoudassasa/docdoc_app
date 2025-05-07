@@ -13,13 +13,19 @@ class DocApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: const Size(375, 812),
-      minTextAdapt: true,
+      // minTextAdapt: true,
       // splitScreenMode: true,
       child: MaterialApp(
         title: 'Book A Doctor',
         theme: ThemeData(
           primaryColor: ColorsManager.mainBlue,
           scaffoldBackgroundColor: Colors.white,
+          //for Selection Handle Color
+          textSelectionTheme: TextSelectionThemeData(
+            cursorColor: ColorsManager.gray,
+            selectionColor: ColorsManager.lightGray,
+            selectionHandleColor: ColorsManager.mainBlue,
+          ),
         ),
         debugShowCheckedModeBanner: false,
         initialRoute: Routes.onBoardingScreen,
