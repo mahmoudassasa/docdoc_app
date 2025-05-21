@@ -30,14 +30,14 @@ environment:
 dependencies:
   
 # State Management.
-  bloc: ^9.0.0
+  flutter_bloc: ^9.1.1
   cupertino_icons: ^1.0.8
   flutter:
     sdk: flutter
 # Code Generator (mainly used with cubit & retrofit).    
-  freezed: ^3.0.6
+  freezed: ^2.4.7
 # Annotations for the freezed code-generator. This package does nothing without freezed too.
-  freezed_annotation: ^3.0.0
+  freezed_annotation: ^2.4.1
 # For Dependency Injection.
   get_it: ^8.0.3
 # Automatically generate code for converting to and from JSON by annotating Dart classes.  
@@ -64,6 +64,8 @@ dependencies:
   flutter_screenutil: ^5.9.3
 # reading and writing simple key-value pairs
 # shared_preferences: ^2.2.2
+# A build system for Dart code generation and modular compilation.
+  build_runner: ^2.4.7
 
 
 dev_dependencies:
