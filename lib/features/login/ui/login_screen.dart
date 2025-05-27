@@ -1,9 +1,8 @@
 import 'package:book_a_doctor/core/helpers/spacing.dart';
 import 'package:book_a_doctor/core/theaming/styles.dart';
 import 'package:book_a_doctor/core/widgets/app_text_button.dart';
-import 'package:book_a_doctor/features/login/data/models/login_request_body.dart';
 import 'package:book_a_doctor/features/login/logic/cubit/login_cubit.dart';
-import 'package:book_a_doctor/features/login/ui/widgets/already_have_account_text.dart';
+import 'package:book_a_doctor/features/login/ui/widgets/dont_have_account_text.dart';
 import 'package:book_a_doctor/features/login/ui/widgets/email_and_password.dart';
 import 'package:book_a_doctor/features/login/ui/widgets/login_bloc_listener.dart';
 import 'package:book_a_doctor/features/login/ui/widgets/terms_and_conditions_text.dart';
@@ -46,14 +45,16 @@ class LoginScreen extends StatelessWidget {
                     ),
                     verticalSpace(40),
                     AppTextButton(
-                      onPressed: () {validateThenDoLogin(context);},
+                      onPressed: () {
+                        validateThenDoLogin(context);
+                      },
                       buttonText: 'Login',
                       textStyle: TextStyles.font16WhiteSemiBold,
                     ),
                     verticalSpace(16),
                     TermsAndConditionsText(),
                     verticalSpace(60),
-                    AlreadyHaveAccountText(),
+                    DontHaveAccountText(),
                     LoginBlocListener(),
                   ],
                 ),
@@ -65,15 +66,9 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-   void validateThenDoLogin(BuildContext context) {
+  void validateThenDoLogin(BuildContext context) {
     if (context.read<LoginCubit>().formKey.currentState!.validate()) {
-      context.read<LoginCubit>().emitLoginStates(LoginRequestBody(email:context.read<LoginCubit>().emailController.text ,
-      password:context.read<LoginCubit>().passwordController.text ,));
-    } else {
-      // Handle validation failure
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Please fill in all fields correctly')),
-      );
+      context.read<LoginCubit>().emitLoginStates();
     }
-   }
+  }
 }
