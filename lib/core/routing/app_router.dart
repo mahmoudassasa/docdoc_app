@@ -11,7 +11,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AppRouter {
   Route generateRoute(RouteSettings settings) {
-    switch (settings.name) {
+    switch (settings.name) { 
       case Routes.onBoardingScreen:
         return MaterialPageRoute(builder: (_) => const OnboardingSceen());
       case Routes.loginScreen:
