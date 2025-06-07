@@ -2,6 +2,8 @@ import 'package:book_a_doctor/core/helpers/spacing.dart';
 import 'package:book_a_doctor/core/theaming/colors.dart';
 import 'package:book_a_doctor/core/theaming/styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+
 class PasswordValidations extends StatelessWidget {
   final bool hasUpperCase;
   final bool hasLowerCase;
