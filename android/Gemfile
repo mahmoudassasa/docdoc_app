@@ -1,6 +1,9 @@
 source "https://rubygems.org"
 
-gem "fastlane"
+#gem "fastlane"
+gem "fastlane", "2.215.0"  # إصدار مستقر
+gem "json", "2.6.3"        # حل مشكلة parser.so
+gem "bundler", "~> 2.4.19" # إصدار متوافق
 
 plugins_path = File.join(File.dirname(__FILE__), 'fastlane', 'Pluginfile')
 eval_gemfile(plugins_path) if File.exist?(plugins_path)
