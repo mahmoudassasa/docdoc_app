@@ -1,6 +1,7 @@
 source "https://rubygems.org"
 
-gem "fastlane"
+gem "fastlane", "2.215.0"  # إصدار ثابت ومستقر
+gem "json", "2.6.3" 
 
 plugins_path = File.join(File.dirname(__FILE__), 'fastlane', 'Pluginfile')
 eval_gemfile(plugins_path) if File.exist?(plugins_path)
