@@ -1,3 +1,4 @@
+import 'package:book_a_doctor/features/home/ui/widgets/home_top_bar.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -5,13 +6,22 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  SafeArea(child: Scaffold(
-      appBar: AppBar(
-        title: const Text('Home'),
+    return  Scaffold(
+    backgroundColor: Colors.white,
+
+      body: SafeArea(
+        child:  Container(
+          width: double.infinity,
+          margin: EdgeInsets.fromLTRB(20.0, 16.0, 20.0, 28.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              HomeTopBar(),
+              
+            ],
+          ),
+        ),
       ),
-      body: const Center(
-        child: Text('Welcome to the Home Screen!'),
-      ),
-    ));
+    );
   }
 }
