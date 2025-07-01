@@ -89,4 +89,14 @@ static TextStyle font18DarkBlueBold = TextStyle(
     fontWeight: FontWeightHelper.regular,
     color: ColorsManager.gray,
   );
+    static TextStyle font18WhiteMidium = TextStyle(
+    fontSize: 18.sp,
+    fontWeight: FontWeightHelper.medium,
+    color: Colors.white,
+  );
+    static TextStyle font12BlueRegular = TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontWeightHelper.regular,
+    color: ColorsManager.mainBlue,
+  );
 }
