@@ -150,6 +150,7 @@ ApiErrorModel _handleError(DioException error) {
           error.response?.statusCode != null &&
           error.response?.statusMessage != null) {
         return ApiErrorModel.fromJson(error.response!.data);
+      
       } else {
         return DataSource.DEFAULT.getFailure();
       }
