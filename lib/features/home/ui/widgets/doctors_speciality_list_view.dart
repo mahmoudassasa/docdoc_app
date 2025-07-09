@@ -1,12 +1,15 @@
-import 'package:book_a_doctor/core/helpers/spacing.dart';
-import 'package:book_a_doctor/core/theaming/colors.dart';
-import 'package:book_a_doctor/core/theaming/styles.dart';
+
+import 'package:book_a_doctor/features/home/data/models/specializations_resposive_model.dart';
+import 'package:book_a_doctor/features/home/ui/widgets/doctors_speciality_list_view_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class DoctorsSpecialityListView extends StatelessWidget {
-  const DoctorsSpecialityListView({super.key});
+  final List<SpecializationsData?> specializationsDataList;
+  const DoctorsSpecialityListView({
+    super.key,
+    required this.specializationsDataList,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -14,31 +17,12 @@ class DoctorsSpecialityListView extends StatelessWidget {
       height: 100.h,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: 10,
+        itemCount: specializationsDataList.length,
 
         itemBuilder: (context, index) {
-          return Padding(
-            padding: EdgeInsetsDirectional.only(start: index == 0 ? 0 : 24.w),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                CircleAvatar(
-                  radius: 28,
-                  backgroundColor: ColorsManager.lightBlue,
-                  child: SvgPicture.asset(
-                    'assets/svgs/general_speciality.svg',
-                    width: 40.w,
-                    height: 40.h,
-                  ),
-                ),
-                verticalSpace(8),
-                Text(
-                  'Speciality ${index + 1}',
-                  style: TextStyles.font12DarkBlueRegular,
-                ),
-              ],
-            ),
-          );
+          return DoctorsSpecialityListViewItem(
+            specializationsData: specializationsDataList[index],
+            itemIndex: index,);
         },
       ),
     );
