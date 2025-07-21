@@ -1,6 +1,6 @@
 
 import 'package:book_a_doctor/features/home/data/models/specializations_resposive_model.dart';
-import 'package:book_a_doctor/features/home/ui/widgets/doctors_list_view_item.dart';
+import 'package:book_a_doctor/features/home/ui/widgets/doctors_list/doctors_list_view_item.dart';
 import 'package:flutter/material.dart';
 
 class DoctorsListView extends StatelessWidget {
