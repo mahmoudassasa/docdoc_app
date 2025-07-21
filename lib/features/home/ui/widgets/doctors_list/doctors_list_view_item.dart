@@ -1,8 +1,11 @@
 import 'package:book_a_doctor/core/helpers/spacing.dart';
+import 'package:book_a_doctor/core/theaming/colors.dart';
 import 'package:book_a_doctor/core/theaming/styles.dart';
 import 'package:book_a_doctor/features/home/data/models/specializations_resposive_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shimmer/shimmer.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class DoctorsListViewItem extends StatelessWidget {
   final Doctors? doctorsModel;
@@ -18,16 +21,37 @@ class DoctorsListViewItem extends StatelessWidget {
             // ),
             child: Row(
               children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(12),
-                  child: Image.network(
-                    
-                    "https://static.wikia.nocookie.net/five-world-war/images/6/64/Hisoka.jpg/revision/latest?cb=20190313114050",
-                    width: 110.w,
-                    height: 120.h,
-                    fit: BoxFit.cover,
+         CachedNetworkImage(
+            imageUrl:
+                "https://static.wikia.nocookie.net/five-world-war/images/6/64/Hisoka.jpg/revision/latest?cb=20190313114050",
+            progressIndicatorBuilder: (context, url, downloadProgress) {
+              return Shimmer.fromColors(
+                baseColor: ColorsManager.lightGray,
+                highlightColor: Colors.white,
+                child: Container(
+                  width: 110.w,
+                  height: 120.h,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.circular(12.0),
+                    color: Colors.white,
                   ),
                 ),
+              );
+            },
+            imageBuilder: (context, imageProvider) => Container(
+              width: 110.w,
+              height: 120.h,
+              decoration: BoxDecoration(
+                shape: BoxShape.rectangle,
+                borderRadius: BorderRadius.circular(12.0),
+                image: DecorationImage(
+                  image: imageProvider,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+          ),
                 horizontalSpace(16),
                 Expanded(
                   child: Column(
