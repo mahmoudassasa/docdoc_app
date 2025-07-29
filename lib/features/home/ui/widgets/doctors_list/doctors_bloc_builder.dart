@@ -15,10 +15,10 @@ class DoctorsBlocBuilder extends StatelessWidget {
           current is DoctorsSuccess || current is DoctorsError,
       builder: (context, state) {
         return state.maybeWhen(
-          doctorsSuccess: (doctorsList) {
+          doctorSuccess: (doctorsList) {
             return setupSuccess(doctorsList);
           },
-          doctorsError: (errorHandler) => setupError(),
+          doctorError: () => setupError(),
           orElse: () {
             return const SizedBox.shrink();
           },

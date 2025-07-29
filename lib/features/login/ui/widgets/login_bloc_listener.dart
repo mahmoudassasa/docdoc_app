@@ -1,4 +1,5 @@
 import 'package:book_a_doctor/core/helpers/extensions.dart';
+import 'package:book_a_doctor/core/networking/api_error_model.dart';
 import 'package:book_a_doctor/core/routing/routes.dart';
 import 'package:book_a_doctor/core/theaming/colors.dart';
 import 'package:book_a_doctor/core/theaming/styles.dart';
@@ -15,7 +16,7 @@ class LoginBlocListener extends StatelessWidget {
     return BlocListener<LoginCubit, LoginState>(
       listener: (context, state) {
         state.whenOrNull(
-          loading: () {
+          loginLoading: () {
             showDialog(
               context: context,
               builder:
@@ -26,30 +27,35 @@ class LoginBlocListener extends StatelessWidget {
                   ),
             );
           },
-          success: (loginResponse) {
+          loginSuccess: (loginResponse) {
             context.pop();
             context.pushNamed(Routes.homeScreen);
           },
-          error: (error) {
-            setupErrorState(context, error);
+          loginError: (apiErrorModel) {
+            setupErrorState(context, apiErrorModel);
           },
         );
       },
       listenWhen:
           (previous, current) =>
-              current is Loading || current is Success || current is Error,
+              current is LoginLoading ||
+              current is LoginSuccess ||
+              current is LoginError,
       child: const SizedBox.shrink(),
     );
   }
 
-  void setupErrorState(BuildContext context, String error) {
+  void setupErrorState(BuildContext context, ApiErrorModel apiErrorModel) {
     context.pop();
     showDialog(
       context: context,
       builder:
           (context) => AlertDialog(
             icon: Icon(Icons.error, color: Colors.red, size: 32),
-            content: Text(error, style: TextStyles.font15DarkBlueMedium),
+            content: Text(
+              apiErrorModel.getAllErrorMessages(),
+              style: TextStyles.font15DarkBlueMedium,
+            ),
             actions: [
               TextButton(
                 onPressed: () {
